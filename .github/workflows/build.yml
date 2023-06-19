@@ -3,8 +3,12 @@ name: CI
 on:
   push:
     branches: ["main"]
+    tags:
+      - "v*.*.*"
   pull_request:
     branches: ["main"]
+    tags:
+      - "v*.*.*"
   workflow_dispatch:
   
 jobs:
@@ -20,7 +24,7 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: jvelizvid/react-app
-          tags: latest
+          tags: ${{ steps.meta.outputs.tags }}
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
