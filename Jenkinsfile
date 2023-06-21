@@ -10,6 +10,6 @@ pipeline {
 
   }
   environment {
-    nodejs = 'nodejs'
+    nodejs = 'NodeJS'
   }
 }
